@@ -3,6 +3,6 @@
 // ===========================================================
 
 // Represents players (real or computer)
-class Player {
+export class Player {
   constructor() {}
 }
