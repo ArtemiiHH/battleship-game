@@ -3,7 +3,7 @@
 // ===========================================================
 
 // Represents player's game board
-class Gameboard {
+export class Gameboard {
   constructor() {}
 
   receiveAttack() {}
