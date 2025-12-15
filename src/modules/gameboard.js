@@ -6,5 +6,7 @@
 export class Gameboard {
   constructor() {}
 
+  createBoard() {}
+
   receiveAttack(x, y) {}
 }
