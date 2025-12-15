@@ -4,10 +4,9 @@
 
 // Represents single ship
 export class Ship {
-  constructor(length, hits = 0, sunk = false) {
+  constructor(length) {
     this.length = length;
-    this.hits = hits;
-    this.sunk = sunk;
+    this.hits = 0;
   }
 
   // Increase number of hits in my ship
@@ -17,8 +16,6 @@ export class Ship {
 
   // Calculate whether ship is sunk, based on length and number of hits
   isSunk() {
-    if (this.hits >= this.length) {
-      return this.sunk = true;
-    }
+    return this.hits >= this.length;
   }
 }
