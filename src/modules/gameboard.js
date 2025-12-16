@@ -26,5 +26,9 @@ export class Gameboard {
     return board;
   }
 
+  placeShip() {}
+
   receiveAttack(x, y) {}
+
+  allShipsSunk() {}
 }
