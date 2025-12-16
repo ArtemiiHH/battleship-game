@@ -2,6 +2,8 @@
 // Game Board Class
 // ===========================================================
 
+import { Ship } from "./ship";
+
 // Represents player's game board
 export class Gameboard {
   constructor(size = 10) {
