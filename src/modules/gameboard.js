@@ -27,7 +27,9 @@ export class Gameboard {
   }
 
   // Place ships at specific coordinates
-  placeShip() {}
+  placeShip(ship, startX, startY, direction) {
+    
+  }
 
   // Checks if attack hit or missed
   receiveAttack(x, y) {}
