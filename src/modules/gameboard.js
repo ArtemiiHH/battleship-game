@@ -2,6 +2,9 @@
 // Game Board Class
 // ===========================================================
 
+// TODO:
+// Fix direction strings
+
 import { Ship } from "./ship";
 
 // Represents player's game board
@@ -27,8 +30,22 @@ export class Gameboard {
   }
 
   // Place ships at specific coordinates
-  placeShip(ship, startX, startY, direction) {
-    
+  placeShip(ship, x, y, direction) {
+    const coordinates = [];
+
+    for (let i = 0; i < ship.length; i++) {
+      if (direction === "horizontal") {
+        let newX = x;
+        let newY = y + i;
+        coordinates.push([newX, newY]);
+      } else if (direction === "vertical") {
+        let newX = x + i;
+        let newY = y;
+        coordinates.push([newX, newY]);
+      }
+    }
+
+    return coordinates;
   }
 
   // Checks if attack hit or missed
