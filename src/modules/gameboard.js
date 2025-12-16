@@ -26,9 +26,15 @@ export class Gameboard {
     return board;
   }
 
+  // Place ships at specific coordinates
   placeShip() {}
 
+  // Checks if attack hit or missed
   receiveAttack(x, y) {}
 
+  // Track missed attacks
+  missedAttacks() {}
+
+  // Check if all ships sunk
   allShipsSunk() {}
 }
