@@ -2,16 +2,14 @@
 // Game Board Class
 // ===========================================================
 
-// TODO:
-// Fix direction strings
-
 import { Ship } from "./ship";
 
 // Represents player's game board
 export class Gameboard {
-  constructor(size = 10) {
+  constructor(size = 10, missed = 0) {
     this.size = size;
     this.board = this.createBoard();
+    this.missed = missed;
   }
 
   // Create 10 x 10 board
@@ -74,11 +72,26 @@ export class Gameboard {
 
   // Checks if attack hit or missed
   receiveAttack(x, y) {
+    // Target coordinates
     const target = this.board[x][y];
+
+    if (target !== null) {
+      target = Ship.hit();
+      return "hit";
+    }
+
+    if (target === null) {
+      target = this.missedAttacks();
+      return "miss";
+    }
+
+    return target;
   }
 
   // Track missed attacks
-  missedAttacks() {}
+  missedAttacks() {
+    this.missed++
+  }
 
   // Check if all ships sunk
   allShipsSunk() {}
