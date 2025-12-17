@@ -73,24 +73,28 @@ export class Gameboard {
   // Checks if attack hit or missed
   receiveAttack(x, y) {
     // Target coordinates
-    const target = this.board[x][y];
+    const cell = this.board[x][y];
 
-    if (target !== null) {
-      target = Ship.hit();
+    // Check if cell is already attacked
+    if (cell === "hit" || cell === "miss") {
+      return "already-attacked";
+    }
+
+    // Check if cell is hit or miss
+    if (cell !== null) {
+      cell.hit();
+      this.board[x][y] = "hit";
       return "hit";
     }
-
-    if (target === null) {
-      target = this.missedAttacks();
+    if (cell === null) {
+      this.board[x][y] = "miss";
       return "miss";
     }
-
-    return target;
   }
 
   // Track missed attacks
   missedAttacks() {
-    this.missed++
+    this.missed++;
   }
 
   // Check if all ships sunk
