@@ -33,6 +33,10 @@ test("Empty cell attack returns miss", () => {
   expect(gameboard.receiveAttack(0, 0)).toEqual("miss");
 });
 test('Record a hit', () => {
-  const gameboard = new Gameboard();
-  expect(gameboard.receiveAttack(0, 0)).toBe();
+  const ship = new Ship();
+  expect(ship.hit()).toBe('hit');
+});
+test('Check if missed', () => {
+  const ship = new Ship();
+  expect(ship.hit()).toBe('miss');
 });
