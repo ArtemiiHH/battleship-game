@@ -33,6 +33,12 @@ export class Gameboard {
   placeShip(ship, x, y, direction) {
     const coordinates = [];
 
+    // Check if ship is out of bounds
+    if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
+      return;
+    }
+
+    // Generate coordinates
     for (let i = 0; i < ship.length; i++) {
       if (direction === "horizontal") {
         let newX = x;
