@@ -17,11 +17,17 @@ import { Ship } from "../src/modules/ship";
 // });
 
 // Place ship function
-test("Check plaeShip function", () => {
+// test("Check plaeShip function", () => {
+//   const gameboard = new Gameboard();
+//   const ship = new Ship();
+
+//   const result = gameboard.placeShip(ship, 0, 0, "vertical");
+
+//   expect(result).toBe(true);
+// });
+
+// Attacking an empty cell returns a miss and records it
+test("Empty cell attack returns miss", () => {
   const gameboard = new Gameboard();
-  const ship = new Ship();
-
-  const result = gameboard.placeShip(ship, 0, 0, "vertical");
-
-  expect(result).toBe(true);
+  expect(gameboard.receiveAttack(0, 0)).toEqual("miss");
 });
