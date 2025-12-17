@@ -73,7 +73,9 @@ export class Gameboard {
   }
 
   // Checks if attack hit or missed
-  receiveAttack(x, y) {}
+  receiveAttack(x, y) {
+    const target = this.board[x][y];
+  }
 
   // Track missed attacks
   missedAttacks() {}
