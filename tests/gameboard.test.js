@@ -2,6 +2,7 @@
 // Test Game Board Modules
 // ===========================================================
 
+import { experiments } from "webpack";
 import { Gameboard } from "../src/modules/gameboard";
 import { Ship } from "../src/modules/ship";
 
@@ -30,4 +31,8 @@ import { Ship } from "../src/modules/ship";
 test("Empty cell attack returns miss", () => {
   const gameboard = new Gameboard();
   expect(gameboard.receiveAttack(0, 0)).toEqual("miss");
+});
+test('Record a hit', () => {
+  const gameboard = new Gameboard();
+  expect(gameboard.receiveAttack(0, 0)).toBe();
 });
