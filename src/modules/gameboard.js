@@ -33,11 +33,6 @@ export class Gameboard {
   placeShip(ship, x, y, direction) {
     const coordinates = [];
 
-    // Check if ship is out of bounds
-    if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
-      return;
-    }
-
     // Generate coordinates
     for (let i = 0; i < ship.length; i++) {
       if (direction === "horizontal") {
@@ -51,7 +46,30 @@ export class Gameboard {
       }
     }
 
-    return coordinates;
+    // Validate coordinates
+    for (const [coordX, coordY] of coordinates) {
+      // Check if coordinates are out of board bounds
+      if (
+        coordX < 0 ||
+        coordX >= this.size ||
+        coordY < 0 ||
+        coordY >= this.size
+      ) {
+        return false;
+      }
+
+      // Check if coordinates overlap taken cells
+      if (this.board[coordX][coordY] !== null) {
+        return false;
+      }
+    }
+
+    // Place ship on coordinates
+    for (const [coordX, coordY] of coordinates) {
+      this.board[coordX][coordY] = ship;
+    }
+
+    return true;
   }
 
   // Checks if attack hit or missed
