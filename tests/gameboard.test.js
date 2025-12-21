@@ -2,32 +2,31 @@
 // Test Game Board Modules
 // ===========================================================
 
-import { experiments } from "webpack";
 import { Gameboard } from "../src/modules/gameboard";
 import { Ship } from "../src/modules/ship";
 
-// Wrong test for now
-// test("Return gameboard", () => {
-//   const gameboard = new Gameboard();
-//   expect(gameboard.createBoard((size = 10))).toBe();
-// });
+// Test createBoard() function
+test("Return gameboard", () => {
+  const gameboard = new Gameboard();
+  expect(gameboard.createBoard()).toBe();
+});
 
-// Attacking an empty cell results in a miss
-// test("Attacking an empty cell results in a miss", () => {
-//   expect(Gameboard.receiveAttack(0, 0)).toBe(false);
-// });
+// Test placeShip() function
+test("Check placeShip function", () => {
+  const gameboard = new Gameboard();
+  const ship = new Ship();
 
-// Place ship function
-// test("Check plaeShip function", () => {
-//   const gameboard = new Gameboard();
-//   const ship = new Ship();
+  const result = gameboard.placeShip(ship, 0, 0, "vertical");
 
-//   const result = gameboard.placeShip(ship, 0, 0, "vertical");
+  expect(result).toBe(true);
+});
 
-//   expect(result).toBe(true);
-// });
+// Test missedAttack() function
 
-// Attacking an empty cell returns a miss and records it
+// Test receiveAttack() function
+test("Attacking an empty cell results in a miss", () => {
+  expect(Gameboard.receiveAttack(0, 0)).toBe(false);
+});
 test("Empty cell attack returns miss", () => {
   const gameboard = new Gameboard();
   expect(gameboard.receiveAttack(0, 0)).toEqual("miss");
@@ -44,3 +43,5 @@ test('Check if all ships are sunk', () => {
   const gameboard = new Gameboard();
   expect(gameboard.allShipsSunk()).toBe(true);
 });
+
+// Test allShipsSunk() function
