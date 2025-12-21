@@ -74,7 +74,7 @@ export class Gameboard {
   }
 
   // Place ships at random coordinates
-  placeShipRandom(ship, x, y, direction) {}
+  placeShipRandom(ship) {}
 
   // Track missed attacks
   missedAttacks() {
