@@ -10,6 +10,7 @@ export class Gameboard {
     this.size = size;
     this.board = this.createBoard();
     this.missed = missed;
+    this.ships = [];
   }
 
   // Create 10 x 10 board
@@ -67,6 +68,8 @@ export class Gameboard {
       this.board[coordX][coordY] = ship;
     }
 
+    // Push placed ship into ship array
+    this.ships.push(ship);
     return true;
   }
 
@@ -86,12 +89,12 @@ export class Gameboard {
     }
 
     // Check if cell is hit or miss
-    if (cell !== null) {
+    if (cell instanceof Ship) {
       cell.hit();
       this.board[x][y] = "hit";
       return "hit";
     }
-    if (cell !== null) {
+    if (cell === null) {
       this.board[x][y] = "miss";
       this.missedAttacks();
       return "miss";
@@ -99,15 +102,7 @@ export class Gameboard {
   }
 
   // Check if all ships sunk
-  // allShipsSunk() {
-  //   const allShips = this.board;
-
-  //   for (const ship of allShips) {
-  //     if (ship.isSunk()) {
-  //       return true;
-  //     }
-  //   }
-
-  //   return false;
-  // }
+  allShipsSunk() {
+    return Object.values(this.ships).every((ship) => ship.isSunk());
+  }
 }
