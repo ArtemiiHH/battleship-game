@@ -81,12 +81,12 @@ export class Gameboard {
     }
 
     // Check if cell is hit or miss
-    if (cell !== null) {
+    if (cell instanceof Ship) {
       cell.hit();
       this.board[x][y] = "hit";
       return "hit";
     }
-    if (cell === null) {
+    if (cell instanceof Ship) {
       this.board[x][y] = "miss";
       return "miss";
     }
