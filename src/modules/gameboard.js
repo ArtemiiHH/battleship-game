@@ -70,6 +70,11 @@ export class Gameboard {
     return true;
   }
 
+  // Track missed attacks
+  missedAttacks() {
+    this.missed++;
+  }
+
   // Checks if attack hit or missed
   receiveAttack(x, y) {
     // Target coordinates
@@ -88,13 +93,9 @@ export class Gameboard {
     }
     if (cell instanceof Ship) {
       this.board[x][y] = "miss";
+      this.missedAttacks();
       return "miss";
     }
-  }
-
-  // Track missed attacks
-  missedAttacks() {
-    this.missed++;
   }
 
   // Check if all ships sunk
