@@ -4,10 +4,11 @@
 
 import { Gameboard } from "./gameboard";
 
-// Represents players (real or computer)
+// Represents Player
 export class Player {
-  constructor(player, computer) {
-    this.player = player;
-    this.computer = computer;
+  constructor(name, isComputer = false) {
+    this.name = name;
+    this.isComputer = isComputer;
+    this.board = new Gameboard();
   }
 }
