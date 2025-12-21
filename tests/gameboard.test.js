@@ -20,5 +20,11 @@ test("Ship placement", () => {
 });
 
 // Test receiveAttack() function
+test("Missed cell", () => {
+  const gameboard = new Gameboard();
+
+  expect(gameboard.receiveAttack(0, 0)).toBe("miss");
+  expect(gameboard.board[0][0]).toBe("miss");
+});
 
 // Test allShipsSunk() function
