@@ -40,3 +40,7 @@ test('Check if missed', () => {
   const ship = new Ship();
   expect(ship.hit()).toBe('miss');
 });
+test('Check if all ships are sunk', () => {
+  const gameboard = new Gameboard();
+  expect(gameboard.allShipsSunk()).toBe(true);
+});
