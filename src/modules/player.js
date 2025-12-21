@@ -11,4 +11,8 @@ export class Player {
     this.isComputer = isComputer;
     this.board = new Gameboard();
   }
+
+  attack() {}
+
+  changeTurns() {}
 }
