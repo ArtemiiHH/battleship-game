@@ -73,6 +73,9 @@ export class Gameboard {
     return true;
   }
 
+  // Place ships at random coordinates
+  placeShipRandom(ship, x, y, direction) {}
+
   // Track missed attacks
   missedAttacks() {
     this.missed++;
