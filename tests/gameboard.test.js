@@ -5,9 +5,6 @@
 import { Gameboard as gameboard } from "../src/modules/gameboard";
 import { Ship as ship } from "../src/modules/ship";
 
-// Test createBoard() function
-test("Return gameboard", () => {});
-
 // Test placeShip() function
 test("Check placeShip function", () => {});
 
