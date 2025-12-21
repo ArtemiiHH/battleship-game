@@ -86,12 +86,12 @@ export class Gameboard {
     }
 
     // Check if cell is hit or miss
-    if (cell instanceof Ship) {
+    if (cell !== null) {
       cell.hit();
       this.board[x][y] = "hit";
       return "hit";
     }
-    if (cell instanceof Ship) {
+    if (cell !== null) {
       this.board[x][y] = "miss";
       this.missedAttacks();
       return "miss";
@@ -99,5 +99,15 @@ export class Gameboard {
   }
 
   // Check if all ships sunk
-  allShipsSunk() {}
+  // allShipsSunk() {
+  //   const allShips = this.board;
+
+  //   for (const ship of allShips) {
+  //     if (ship.isSunk()) {
+  //       return true;
+  //     }
+  //   }
+
+  //   return false;
+  // }
 }
