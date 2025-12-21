@@ -32,10 +32,22 @@ test("Hit ship cell", () => {
   const ship = new Ship(3);
 
   // Place ship
-  gameboard.placeShip(ship, 5, 5, 'horizontal');
+  gameboard.placeShip(ship, 5, 5, "horizontal");
 
   expect(gameboard.receiveAttack(5, 5)).toBe("hit");
   expect(gameboard.board[5][5]).toBe("hit");
+  expect(ship.hits).toBe(1);
+});
+test("Already-attacked cell", () => {
+  const gameboard = new Gameboard();
+  const ship = new Ship(3);
+
+  // Place ship
+  gameboard.placeShip(ship, 5, 5, "horizontal");
+  // Attack cell
+  gameboard.receiveAttack(5, 5);
+
+  expect(gameboard.receiveAttack(5, 5)).toBe("already-attacked");
   expect(ship.hits).toBe(1);
 });
 
