@@ -1,5 +1,5 @@
 // ===========================================================
-// Test Game Board Modules
+// Test Game Board Module
 // ===========================================================
 
 import { Gameboard } from "../src/modules/gameboard";
