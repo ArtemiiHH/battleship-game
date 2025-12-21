@@ -2,7 +2,6 @@
 // Test Game Board Modules
 // ===========================================================
 
-import { experiments } from "webpack";
 import { Gameboard } from "../src/modules/gameboard";
 import { Ship } from "../src/modules/ship";
 
@@ -21,7 +20,7 @@ test("Ship placement", () => {
 });
 
 // Test receiveAttack() function
-test("Miss ship cell", () => {
+test("Miss on empty cell", () => {
   const gameboard = new Gameboard();
 
   expect(gameboard.receiveAttack(0, 0)).toBe("miss");
@@ -52,3 +51,25 @@ test("Already-attacked cell", () => {
 });
 
 // Test allShipsSunk() function
+test("Not all ships sunk", () => {
+  const gameboard = new Gameboard();
+  const ship = new Ship(1);
+
+  // Place ship
+  gameboard.placeShip(ship, 0, 0, "vertical");
+  // Attack cell
+  gameboard.receiveAttack(5, 5);
+
+  expect(gameboard.allShipsSunk()).toBe(false);
+});
+test("All ships sunk", () => {
+  const gameboard = new Gameboard();
+  const ship = new Ship(1);
+
+  // Place ship
+  gameboard.placeShip(ship, 0, 0, "vertical");
+  // Attack cell
+  gameboard.receiveAttack(0, 0);
+
+  expect(gameboard.allShipsSunk()).toBe(true);
+});
