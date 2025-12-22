@@ -7,6 +7,14 @@ import { Player } from "../src/modules/player";
 import { Ship } from "../src/modules/ship";
 
 // Test attack() function
-describe("Human attack", () => {});
+describe("Human attack", () => {
+  const gameboard = new Gameboard();
+  const ship = new Ship(3);
+  const player = new Player('human player');
+
+  test('Human attack given coordinates and returns result', () => {
+
+  });
+});
 
 describe("Computer attack", () => {});
