@@ -40,7 +40,7 @@ describe("Human attack", () => {
 });
 
 describe("Computer attack", () => {
-  test("Computer attack marks exactly one cell as attacked", () => {
+  test("computer attack marks exactly one cell as attacked", () => {
     const gameboard = new Gameboard();
     const computer = new Player("computer", true);
 
@@ -66,7 +66,7 @@ describe("Computer attack", () => {
     expect(attackedCells).toBe(1);
   });
 
-  test("Computer eventually hits a ship", () => {
+  test("computer eventually hits a ship", () => {
     const gameboard = new Gameboard();
     const ship = new Ship(1);
     const computer = new Player("computer", true);
