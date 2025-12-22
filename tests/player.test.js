@@ -39,4 +39,8 @@ describe("Human attack", () => {
   });
 });
 
-describe("Computer attack", () => {});
+describe("Computer attack", () => {
+  const gameboard = new Gameboard();
+  const ship = new Ship(3);
+  const player = new Player("computer player");
+});
