@@ -12,5 +12,10 @@ export class Player {
     this.board = new Gameboard();
   }
 
-  attack(enemyBoard, x, y) {}
+  attack(enemyBoard, x, y) {
+    // Check if user or computer
+    if (this.isComputer === false) {
+      enemyBoard.receiveAttack(x, y);
+    }
+  }
 }
