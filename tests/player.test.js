@@ -40,7 +40,47 @@ describe("Human attack", () => {
 });
 
 describe("Computer attack", () => {
-  const gameboard = new Gameboard();
-  const ship = new Ship(3);
-  const player = new Player("computer player");
+  test("Computer attack marks exactly one cell as attacked", () => {
+    const gameboard = new Gameboard();
+    const computer = new Player("computer", true);
+
+    // Perform one computer attack
+    computer.attack(gameboard);
+    computer.attack(gameboard);
+    computer.attack(gameboard);
+
+    // Count attacked cells
+    let attackedCells = 0;
+
+    for (let x = 0; x < gameboard.size; x++) {
+      for (let y = 0; y < gameboard.size; y++) {
+        if (
+          gameboard.board[x][y] === "hit" ||
+          gameboard.board[x][y] === "miss"
+        ) {
+          attackedCells++;
+        }
+      }
+    }
+
+    expect(attackedCells).toBe(1);
+  });
+
+  test("Computer eventually hits a ship", () => {
+    const gameboard = new Gameboard();
+    const ship = new Ship(1);
+    const computer = new Player("computer", true);
+
+    // Place a 1-length ship
+    gameboard.placeShip(ship, 0, 0, "horizontal");
+
+    // Keep attacking until ship is hit
+    let attempts = 0;
+    while (ship.hits === 0 && attempts < 100) {
+      computer.attack(gameboard);
+      attempts++;
+    }
+
+    expect(ship.hits).toBe(1);
+  });
 });
