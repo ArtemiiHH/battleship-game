@@ -15,8 +15,22 @@ test("Ship placement", () => {
   // Board contains the ship where expected
   expect(gameboard.board[0][0]).toBe(ship);
   expect(gameboard.board[1][0]).toBe(ship);
-  // Check the ship was passed in array
+  // Check if ship was passed in array
   expect(gameboard.ships).toContain(ship);
+});
+
+// Test placeShipRandom() function
+test("Random ship placement", () => {
+  const gameboard = new Gameboard();
+  const ship = new Ship(3);
+
+  // Place ship
+  gameboard.placeShipRandom(ship);
+
+  // Random ship was passed in array
+  expect(gameboard.ships).toContain(ship);
+  // Correct number of cells contain the ship
+  expect(ship.length).toEqual(3);
 });
 
 // Test receiveAttack() function
