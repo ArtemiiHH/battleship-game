@@ -74,7 +74,20 @@ export class Gameboard {
   }
 
   // Place ships at random coordinates
-  placeShipRandom(ship) {}
+  placeShipRandom(ship) {
+    while (true) {
+      // Generate random values
+      let x = Math.floor(Math.random() * this.size);
+      let y = Math.floor(Math.random() * this.size);
+      let direction = Math.floor(Math.random() * 2);
+      direction === 0 ? direction = "horizontal" : direction = "vertical";
+
+      // Return if successful
+      if (this.placeShip(ship, x, y, direction)) {
+        return;
+      }
+    }
+  }
 
   // Track missed attacks
   missedAttacks() {
