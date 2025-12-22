@@ -12,7 +12,5 @@ export class Player {
     this.board = new Gameboard();
   }
 
-  attack() {}
-
-  changeTurns() {}
+  attack(enemyBoard, x, y) {}
 }
