@@ -1,5 +1,5 @@
 // ==========================
-// Game Control Module
+// Game Controller Module
 // ==========================
 
 import { Gameboard } from "./gameboard";
