@@ -1,6 +1,6 @@
-// ===========================================================
+// ==========================
 // Game Board Class
-// ===========================================================
+// ==========================
 
 import { Ship } from "./ship";
 
@@ -80,7 +80,7 @@ export class Gameboard {
       let x = Math.floor(Math.random() * this.size);
       let y = Math.floor(Math.random() * this.size);
       let direction = Math.floor(Math.random() * 2);
-      direction === 0 ? direction = "horizontal" : direction = "vertical";
+      direction === 0 ? (direction = "horizontal") : (direction = "vertical");
 
       // Return if successful
       if (this.placeShip(ship, x, y, direction)) {
