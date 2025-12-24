@@ -14,15 +14,23 @@ export class Player {
 
   attack(enemyBoard, x, y) {
     // Check if user or computer
-    if (this.isComputer === false) {
+    if (!this.isComputer) {
       // Human attack
-      const attackResult = enemyBoard.receiveAttack(x, y);
-      return attackResult;
+      const result = enemyBoard.receiveAttack(x, y);
+      return result;
     } else {
-      while () {
+      // Computer attack
+      let result = "already-attacked";
+
+      // Generate until result is hit or miss
+      while (result === "already-attacked") {
         const x = Math.floor(Math.random() * enemyBoard.size);
         const y = Math.floor(Math.random() * enemyBoard.size);
+
+        result = enemyBoard.receiveAttack(x, y);
       }
+
+      return result;
     }
   }
 }
