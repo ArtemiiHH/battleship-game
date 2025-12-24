@@ -19,6 +19,7 @@ export class Player {
       const attackResult = enemyBoard.receiveAttack(x, y);
       return attackResult;
     } else {
+      while () {}
     }
   }
 }
