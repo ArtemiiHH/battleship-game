@@ -19,7 +19,10 @@ export class Player {
       const attackResult = enemyBoard.receiveAttack(x, y);
       return attackResult;
     } else {
-      while () {}
+      while () {
+        const x = Math.floor(Math.random() * enemyBoard.size);
+        const y = Math.floor(Math.random() * enemyBoard.size);
+      }
     }
   }
 }
