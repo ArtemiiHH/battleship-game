@@ -46,8 +46,6 @@ describe("Computer attack", () => {
 
     // Perform one computer attack
     computer.attack(gameboard);
-    computer.attack(gameboard);
-    computer.attack(gameboard);
 
     // Count attacked cells
     let attackedCells = 0;
