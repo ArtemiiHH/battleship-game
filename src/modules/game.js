@@ -6,4 +6,17 @@ import { Gameboard } from "./gameboard";
 import { Ship } from "./ship";
 import { Player } from "./player";
 
-class Game {}
+// Full running match of Battleship
+class Game {
+  constructor() {}
+
+  start() {}
+
+  playerAttack(x, y) {}
+
+  computerAttack() {}
+
+  changeTurn() {}
+
+  isGameOver() {}
+}
