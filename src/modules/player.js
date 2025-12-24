@@ -15,7 +15,10 @@ export class Player {
   attack(enemyBoard, x, y) {
     // Check if user or computer
     if (this.isComputer === false) {
-      enemyBoard.receiveAttack(x, y);
+      // Human attack
+      const attackResult = enemyBoard.receiveAttack(x, y);
+      return attackResult;
+    } else {
     }
   }
 }
