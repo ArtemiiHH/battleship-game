@@ -33,4 +33,8 @@ export class Player {
       return result;
     }
   }
+
+  reset() {
+    this.board = new Gameboard();
+  }
 }
