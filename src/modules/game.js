@@ -22,6 +22,25 @@ export class Game {
     // Reset player boards
     this.playerOne.reset();
     this.playerTwo.reset();
+
+    // Ship objects for each player
+    const playerOneShips = {
+      Carrier: 5,
+      Battleship: 4,
+      Destroyer: 3,
+      Submarine: 3,
+      "Patrol Boat": 2,
+    };
+    const playerTwoShips = {
+      Carrier: 5,
+      Battleship: 4,
+      Destroyer: 3,
+      Submarine: 3,
+      "Patrol Boat": 2,
+    };
+
+    // Human starts
+    this.currentTurn = this.playerOne;
   }
 
   playerAttack(x, y) {}
