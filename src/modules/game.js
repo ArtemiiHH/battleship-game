@@ -15,7 +15,14 @@ export class Game {
     this.isGameRunning = isGameRunning;
   }
 
-  start() {}
+  start() {
+    // Mark game as running
+    this.isGameRunning = true;
+
+    // Reset player boards
+    this.playerOne.reset();
+    this.playerTwo.reset();
+  }
 
   playerAttack(x, y) {}
 
