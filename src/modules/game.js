@@ -11,8 +11,6 @@ export class Game {
   constructor() {
     this.playerOne = new Player('human');
     this.playerTwo = new Player('computer', true);
-    this.playerOneBoard = new Gameboard();
-    this.playerTwoBoard = new Gameboard();
   }
 
   start() {}
