@@ -20,6 +20,19 @@ body {
   width: 30px;
 }
 
+.ship-cell {
+  background-color: rgb(0, 255, 0);
+  border-color: black;
+}
+
+.hit-cell {
+  background-color: rgb(255, 0, 0);
+}
+
+.missed-cell {
+  background-color: rgb(0, 0, 255);
+}
+
 .human-wrapper {
   border: 2px solid rgb(0, 255, 0);
   display: flex;
