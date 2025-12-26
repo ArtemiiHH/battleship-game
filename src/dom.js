@@ -4,55 +4,43 @@
 
 import { Game } from "./modules/game";
 
-function createBoardWrapper(type) {}
-
-function renderBoard(boardData, wrapepr) {}
-
-function renderGame(game) {}
-
-// Start game
 const game = new Game();
 game.start();
 
 // App container
 const container = document.querySelector("#container");
 
-// Get player board data
-const humanBoard = game.playerOne.board.board;
-const computerBoard = game.playerTwo.board.board;
+function createBoardWrapper(type) {
+  const wrapper = document.createElement("div");
 
-// Board cell wrappers
-const humanBoardWrapper = document.createElement("div");
-humanBoardWrapper.classList.add("human-wrapper");
-const computerBoardWrapper = document.createElement("div");
-computerBoardWrapper.classList.add("computer-wrapper");
-
-// Create human board (visual)
-for (let i = 0; i < humanBoard.length; i++) {
-  const row = document.createElement("div");
-  row.classList.add("row");
-
-  for (let j = 0; j < humanBoard[i].length; j++) {
-    const cell = document.createElement("div");
-    cell.classList.add("cell");
-    row.appendChild(cell);
+  if (type === "human") {
+    wrapper.classList.add("human-wrapper");
+    return wrapper;
+  } else {
+    wrapper.classList.add("computer-wrapper");
+    return wrapper;
   }
-
-  humanBoardWrapper.appendChild(row);
 }
-container.appendChild(humanBoardWrapper);
 
-// Create computer board (visual)
-for (let i = 0; i < computerBoard.length; i++) {
-  const row = document.createElement("div");
-  row.classList.add("row");
+function renderBoard(boardData, wrapper) {
+  // Create board
+  for (let i = 0; i < boardData.length; i++) {
+    const row = document.createElement("div");
+    row.classList.add("row");
 
-  for (let j = 0; j < computerBoard[i].length; j++) {
-    const cell = document.createElement("div");
-    cell.classList.add("cell");
-    row.appendChild(cell);
+    for (let j = 0; j < boardData[i].length; j++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      row.appendChild(cell);
+    }
+
+    wrapper.appendChild(row);
   }
-
-  computerBoardWrapper.appendChild(row);
 }
-container.appendChild(computerBoardWrapper);
+
+function renderGame(game) {
+  game.start();
+  createBoardWrapper();
+  renderBoard();
+  container.append(wrapper);
+}
