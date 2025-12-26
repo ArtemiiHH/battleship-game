@@ -17,10 +17,11 @@ humanBoardWrapper.classList.add("human-wrapper");
 const computerBoardWrapper = document.createElement("div");
 computerBoardWrapper.classList.add("computer-wrapper");
 
+// Get player board data
 const humanBoard = game.playerOne.board.board;
 const computerBoard = game.playerTwo.board.board;
 
-// Create boards (visual)
+// Create human board (visual)
 for (let i = 0; i < humanBoard.length; i++) {
   const row = document.createElement("div");
   row.classList.add('row');
@@ -34,3 +35,18 @@ for (let i = 0; i < humanBoard.length; i++) {
   humanBoardWrapper.appendChild(row);
 }
 container.appendChild(humanBoardWrapper);
+
+// Create computer board (visual)
+for (let i = 0; i < computerBoard.length; i++) {
+  const row = document.createElement("div");
+  row.classList.add('row');
+
+  for (let j = 0; j < computerBoard[i].length; j++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    row.appendChild(cell);
+  }
+
+  computerBoardWrapper.appendChild(row);
+}
+container.appendChild(computerBoardWrapper);
