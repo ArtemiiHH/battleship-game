@@ -43,13 +43,13 @@ export class Game {
     Object.entries(playerOneShips).forEach((ship) => {
       const name = ship[0];
       const length = ship[1];
-      this.playerOne.board.placeShipRandom(new Ship(length));
+      this.playerOne.board.placeShipRandom(new Ship(name, length));
     });
 
     Object.entries(playerTwoShips).forEach((ship) => {
       const name = ship[0];
       const length = ship[1];
-      this.playerTwo.board.placeShipRandom(new Ship(length));
+      this.playerTwo.board.placeShipRandom(new Ship(name, length));
     });
 
     // Human starts
