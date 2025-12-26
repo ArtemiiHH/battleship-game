@@ -3,6 +3,7 @@
 // ==========================
 
 import { Game } from "./modules/game";
+import { Ship } from "./modules/ship";
 
 // Start game
 const game = new Game();
@@ -25,7 +26,7 @@ function createBoardWrapper(type) {
 }
 
 // Render board into wrapper
-function renderBoard(boardData, wrapper) {
+function renderBoard(boardData, wrapper, type) {
   // Create board
   for (let i = 0; i < boardData.length; i++) {
     const row = document.createElement("div");
@@ -33,7 +34,19 @@ function renderBoard(boardData, wrapper) {
 
     for (let j = 0; j < boardData[i].length; j++) {
       const cell = document.createElement("div");
+      const value = boardData[i][j];
+
+      // Base class for all cells
       cell.classList.add("cell");
+
+      if (value === "hit") {
+        cell.classList.add("hit-cell");
+      } else if (value === "miss") {
+        cell.classList.add("missed-cell");
+      } else if (value instanceof Ship && type === "human") {
+        cell.classList.add("ship-cell");
+      }
+
       row.appendChild(cell);
     }
 
@@ -44,15 +57,15 @@ function renderBoard(boardData, wrapper) {
 // Render entire game UI
 function renderGame(game) {
   // Clear container
-  container.innerHTML = '';
+  container.innerHTML = "";
 
   // Create wrappers
-  const humanWrapper = createBoardWrapper('human');
-  const computerWrapper = createBoardWrapper('computer');
+  const humanWrapper = createBoardWrapper("human");
+  const computerWrapper = createBoardWrapper("computer");
 
   // Render boards
-  renderBoard(game.playerOne.board.board, humanWrapper);
-  renderBoard(game.playerTwo.board.board, computerWrapper);
+  renderBoard(game.playerOne.board.board, humanWrapper, "human");
+  renderBoard(game.playerTwo.board.board, computerWrapper, "computer");
 
   container.append(humanWrapper, computerWrapper);
 }
