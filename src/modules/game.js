@@ -39,6 +39,19 @@ export class Game {
       "Patrol Boat": 2,
     };
 
+    // Place ships on each players board (random for now)
+    Object.entries(playerOneShips).forEach((ship) => {
+      const name = ship[0];
+      const length = ship[1];
+      this.playerOne.board.placeShipRandom(new Ship(length));
+    });
+
+    Object.entries(playerTwoShips).forEach((ship) => {
+      const name = ship[0];
+      const length = ship[1];
+      this.playerTwo.board.placeShipRandom(new Ship(length));
+    });
+
     // Human starts
     this.currentTurn = this.playerOne;
   }
