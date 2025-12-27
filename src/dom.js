@@ -39,6 +39,7 @@ function renderBoard(boardData, wrapper, type) {
       // Base class for all cells
       cell.classList.add("cell");
 
+      // Color cells based on state
       if (value === "hit") {
         cell.classList.add("hit-cell");
       } else if (value === "miss") {
