@@ -55,6 +55,9 @@ function renderBoard(boardData, wrapper, type) {
   }
 }
 
+// Handle cell clicks
+function handleCellClicks(x, y) {}
+
 // Render entire game UI
 function renderGame(game) {
   // Clear container
