@@ -56,7 +56,12 @@ export class Game {
     this.currentTurn = this.playerOne;
   }
 
-  playerAttack(x, y) {}
+  playerAttack(x, y) {
+    // Mark game as running
+    this.isGameRunning = true;
+    // Set current turn to human player
+    this.currentTurn = this.playerOne;
+  }
 
   computerAttack() {}
 
