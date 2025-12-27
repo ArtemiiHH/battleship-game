@@ -68,6 +68,7 @@ export class Game {
       if (this.playerTwo.board.allShipsSunk()) {
         this.isGameRunning = false;
       } else {
+        // If game not over change turn
         this.currentTurn = this.playerTwo;
         this.computerAttack();
       }
@@ -76,7 +77,24 @@ export class Game {
     }
   }
 
-  computerAttack() {}
+  computerAttack() {
+    if (this.currentTurn !== this.playerTwo) return;
+
+    // Computer attacks human
+    const launchAttack = this.playerTwo.attack(this.playerOne.board, x, y);
+
+    // Check cell state after attack
+    if (launchAttack === "hit" || launchAttack === "miss") {
+      // Check if game over, otherwise continue
+      if (this.playerTwo.board.allShipsSunk()) {
+        this.isGameRunning = false;
+        // If game not over change turn
+      } else {
+        this.currentTurn = this.playerOne;
+        this.playerAttack();
+      }
+    }
+  }
 
   changeTurn() {}
 
