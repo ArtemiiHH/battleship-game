@@ -57,10 +57,23 @@ export class Game {
   }
 
   playerAttack(x, y) {
-    // Mark game as running
-    this.isGameRunning = true;
-    // Set current turn to human player
-    this.currentTurn = this.playerOne;
+    if (this.currentTurn !== this.playerOne) return;
+
+    // Human attacks computer
+    const launchAttack = this.playerOne.attack(this.playerTwo.board, x, y);
+
+    // Check cell state after attack
+    if (launchAttack === "hit" || launchAttack === "miss") {
+      // Check if game over, otherwise continue
+      if (this.playerTwo.board.allShipsSunk()) {
+        this.isGameRunning = false;
+      } else {
+        this.currentTurn = this.playerTwo;
+        this.computerAttack();
+      }
+    } else if (launchAttack === "already-attacked") {
+      this.currentTurn = this.playerOne;
+    }
   }
 
   computerAttack() {}
