@@ -100,6 +100,8 @@ function renderPlayScreen() {
   // Start button
   const startBtn = document.createElement("button");
   startBtn.textContent = "Start";
+  // Disable button
+  startBtn.disabled = true;
   startBtn.addEventListener("click", () => {
     // Hide play screen
     playScreenContainer.style.display = "none";
@@ -111,6 +113,8 @@ function renderPlayScreen() {
   const randomFleetBtn = document.createElement("button");
   randomFleetBtn.textContent = "Randomize";
   randomFleetBtn.addEventListener("click", () => {
+    // Enable button
+    startBtn.disabled = false;
     // Create new board in memory
     game.start();
     // Clear wrapper first
