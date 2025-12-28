@@ -25,6 +25,13 @@ function createBoardWrapper(type) {
   return wrapper;
 }
 
+// Handle cell clicks
+function handleCellClicks(x, y) {
+  // Launch attack
+  game.playerAttack(x, y);
+  renderGame(game);
+}
+
 // Render board into wrapper
 function renderBoard(boardData, wrapper, type) {
   // Create board
@@ -38,6 +45,13 @@ function renderBoard(boardData, wrapper, type) {
 
       // Base class for all cells
       cell.classList.add("cell");
+
+      // Cell event listener
+      if (type === "computer") {
+        cell.addEventListener("click", () => {
+          handleCellClicks(i, j);
+        });
+      }
 
       // Color cells based on state
       if (value === "hit") {
@@ -53,12 +67,6 @@ function renderBoard(boardData, wrapper, type) {
 
     wrapper.appendChild(row);
   }
-}
-
-// Handle cell clicks
-function handleCellClicks(x, y) {
-  // Launch attack
-  game.playerAttack(x, y);
 }
 
 // Render entire game UI
