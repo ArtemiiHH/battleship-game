@@ -56,7 +56,10 @@ function renderBoard(boardData, wrapper, type) {
 }
 
 // Handle cell clicks
-function handleCellClicks(x, y) {}
+function handleCellClicks(x, y) {
+  // Launch attack
+  game.playerAttack(x, y);
+}
 
 // Render entire game UI
 function renderGame(game) {
