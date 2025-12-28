@@ -58,6 +58,11 @@ function renderBoard(boardData, wrapper, type) {
         cell.classList.add("hit-cell");
       } else if (value === "miss") {
         cell.classList.add("missed-cell");
+        // Mark cell as X if missed
+        const x = document.createElement('p');
+        x.classList.add('missed-mark');
+        x.textContent = 'X';
+        cell.appendChild(x);
       } else if (value instanceof Ship && type === "human") {
         cell.classList.add("ship-cell");
       }
