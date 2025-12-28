@@ -66,7 +66,7 @@ export class Game {
     if (launchAttack === "hit" || launchAttack === "miss") {
       // Check if game over, otherwise continue
       if (this.playerTwo.board.allShipsSunk()) {
-        this.isGameRunning = false;
+        this.isGameOver();
       } else {
         // If game not over change turn
         this.changeTurn(this.currentTurn);
@@ -87,7 +87,7 @@ export class Game {
     if (launchAttack === "hit" || launchAttack === "miss") {
       // Check if game over, otherwise continue
       if (this.playerTwo.board.allShipsSunk()) {
-        this.isGameRunning = false;
+        this.isGameOver();
         // If game not over change turn
       } else {
         this.changeTurn(this.currentTurn);
@@ -102,5 +102,12 @@ export class Game {
     else this.currentTurn = this.playerOne;
   }
 
-  isGameOver() {}
+  isGameOver() {
+    if (
+      this.playerOne.board.allShipsSunk() ||
+      this.playerTwo.board.allShipsSunk()
+    ) {
+      this.isGameOver = true;
+    }
+  }
 }
