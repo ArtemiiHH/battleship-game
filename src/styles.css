@@ -29,6 +29,22 @@ body {
   width: auto;
 }
 
+#win-lose-modal {
+  background-color: black;
+  opacity: 0.5;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  height: 90vh;
+  width: auto;
+}
+
+.modal {
+  height: 300px;
+  width: 500px;
+}
+
 h1 {
   font-size: 3rem;
   margin: 0;

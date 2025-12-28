@@ -105,7 +105,7 @@ export class Game {
       this.playerOne.board.allShipsSunk() ||
       this.playerTwo.board.allShipsSunk()
     ) {
-      return true;
+      this.isGameOver = true;
     }
   }
 }

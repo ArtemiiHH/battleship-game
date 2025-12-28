@@ -11,6 +11,7 @@ const game = new Game();
 // App containers
 const playScreenContainer = document.querySelector("#play-screen-container");
 const container = document.querySelector("#container");
+const winLoseModal = document.querySelector("#win-lose-modal");
 
 // Create board wrapper
 function createBoardWrapper(type) {
@@ -25,11 +26,28 @@ function createBoardWrapper(type) {
   return wrapper;
 }
 
+// Render win/losre screen UI
+function renderWinLoseScreen() {
+  container.style.display = "none";
+
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  const winLoseText = document.createElement("h3");
+  winLoseText.textContent = "You won!";
+
+  winLoseModal.appendChild(modal);
+}
+
 // Handle cell clicks
 function handleCellClicks(x, y) {
   // Launch attack
   game.playerAttack(x, y);
   renderGame(game);
+
+  if (game.isGameOver()) {
+    game.playerOne.board.disabled = true;
+    renderWinLoseScreen();
+  }
 }
 
 // Render board into wrapper
