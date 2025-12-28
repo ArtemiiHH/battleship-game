@@ -9,7 +9,8 @@ import { Ship } from "./modules/ship";
 const game = new Game();
 game.start();
 
-// App container
+// App containers
+const playScreenContainer = document.querySelector("#play-screen-container");
 const container = document.querySelector("#container");
 
 // Create board wrapper
@@ -59,9 +60,9 @@ function renderBoard(boardData, wrapper, type) {
       } else if (value === "miss") {
         cell.classList.add("missed-cell");
         // Mark cell as X if missed
-        const x = document.createElement('p');
-        x.classList.add('missed-mark');
-        x.textContent = 'X';
+        const x = document.createElement("p");
+        x.classList.add("missed-mark");
+        x.textContent = "X";
         cell.appendChild(x);
       } else if (value instanceof Ship && type === "human") {
         cell.classList.add("ship-cell");
@@ -78,6 +79,7 @@ function renderBoard(boardData, wrapper, type) {
 function renderGame(game) {
   // Clear container
   container.innerHTML = "";
+  container.style.display = "grid";
 
   // Create wrappers
   const humanWrapper = createBoardWrapper("human");
@@ -90,5 +92,40 @@ function renderGame(game) {
   container.append(humanWrapper, computerWrapper);
 }
 
-// Initial game render
-renderGame(game);
+// Render play screen UI
+function renderPlayScreen() {
+  // Container to keep buttons
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("button-container");
+
+  // Start button
+  const startBtn = document.createElement("button");
+  startBtn.textContent = "Start";
+  startBtn.addEventListener("click", () => {
+    playScreenContainer.style.display = "none";
+    renderGame(game);
+  });
+
+  // Randomize fleet button
+  const randomFleetBtn = document.createElement("button");
+  randomFleetBtn.textContent = "Randomize";
+  randomFleetBtn.addEventListener("click", () => {
+    renderGame(game);
+  });
+
+  // Create human board wrapper
+  const humanWrapper = createBoardWrapper("human");
+
+  // Render human board
+  renderBoard(game.playerOne.board.board, humanWrapper, "human");
+
+  // Append elements
+  buttonContainer.append(randomFleetBtn, startBtn);
+  playScreenContainer.append(humanWrapper, buttonContainer);
+}
+
+// Render play screen
+renderPlayScreen();
+
+// Render actual game
+// renderGame(game);
