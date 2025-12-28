@@ -95,6 +95,8 @@ export class Game {
     }
   }
 
+  smartComputerAttack() {}
+
   changeTurn() {}
 
   isGameOver() {}
