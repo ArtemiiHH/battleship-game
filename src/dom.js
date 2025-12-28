@@ -7,7 +7,6 @@ import { Ship } from "./modules/ship";
 
 // Start game
 const game = new Game();
-game.start();
 
 // App containers
 const playScreenContainer = document.querySelector("#play-screen-container");
@@ -110,7 +109,12 @@ function renderPlayScreen() {
   const randomFleetBtn = document.createElement("button");
   randomFleetBtn.textContent = "Randomize";
   randomFleetBtn.addEventListener("click", () => {
-    renderGame(game);
+    // Create new board in memory
+    game.start();
+    // Clear wrapper first
+    humanWrapper.innerHTML = "";
+    // Render new ship layout
+    renderBoard(game.playerOne.board.board, humanWrapper, "human");
   });
 
   // Create human board wrapper
@@ -126,6 +130,3 @@ function renderPlayScreen() {
 
 // Render play screen
 renderPlayScreen();
-
-// Render actual game
-// renderGame(game);
