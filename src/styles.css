@@ -54,7 +54,7 @@ body {
 }
 
 .cell:hover {
-  cursor: pointer;
+  cursor: crosshair;
 }
 
 .ship-cell {
