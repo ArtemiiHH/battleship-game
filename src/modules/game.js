@@ -81,7 +81,7 @@ export class Game {
     if (this.currentTurn !== this.playerTwo) return;
 
     // Computer attacks human
-    const launchAttack = this.playerTwo.attack(this.playerOne.board, x, y);
+    const launchAttack = this.playerTwo.attack(this.playerOne.board);
 
     // Check cell state after attack
     if (launchAttack === "hit" || launchAttack === "miss") {
@@ -91,7 +91,6 @@ export class Game {
         // If game not over change turn
       } else {
         this.currentTurn = this.playerOne;
-        this.playerAttack();
       }
     }
   }
