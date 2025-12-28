@@ -69,11 +69,11 @@ export class Game {
         this.isGameRunning = false;
       } else {
         // If game not over change turn
-        this.currentTurn = this.playerTwo;
+        this.changeTurn(this.currentTurn);
         this.computerAttack();
       }
     } else if (launchAttack === "already-attacked") {
-      this.currentTurn = this.playerOne;
+      this.changeTurn(this.currentTurn);
     }
   }
 
@@ -90,14 +90,17 @@ export class Game {
         this.isGameRunning = false;
         // If game not over change turn
       } else {
-        this.currentTurn = this.playerOne;
+        this.changeTurn(this.currentTurn);
       }
     }
   }
 
   smartComputerAttack() {}
 
-  changeTurn() {}
+  changeTurn(turn) {
+    if (this.currentTurn === this.playerOne) this.currentTurn = this.playerTwo;
+    else this.currentTurn = this.playerOne;
+  }
 
   isGameOver() {}
 }
