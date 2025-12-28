@@ -69,11 +69,9 @@ export class Game {
         this.isGameOver();
       } else {
         // If game not over change turn
-        this.changeTurn(this.currentTurn);
+        this.changeTurn();
         this.computerAttack();
       }
-    } else if (launchAttack === "already-attacked") {
-      this.changeTurn(this.currentTurn);
     }
   }
 
@@ -86,18 +84,18 @@ export class Game {
     // Check cell state after attack
     if (launchAttack === "hit" || launchAttack === "miss") {
       // Check if game over, otherwise continue
-      if (this.playerTwo.board.allShipsSunk()) {
+      if (this.playerOne.board.allShipsSunk()) {
         this.isGameOver();
         // If game not over change turn
       } else {
-        this.changeTurn(this.currentTurn);
+        this.changeTurn();
       }
     }
   }
 
   smartComputerAttack() {}
 
-  changeTurn(turn) {
+  changeTurn() {
     if (this.currentTurn === this.playerOne) this.currentTurn = this.playerTwo;
     else this.currentTurn = this.playerOne;
   }
@@ -107,7 +105,7 @@ export class Game {
       this.playerOne.board.allShipsSunk() ||
       this.playerTwo.board.allShipsSunk()
     ) {
-      this.isGameOver = true;
+      return true;
     }
   }
 }
