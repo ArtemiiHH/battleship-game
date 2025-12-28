@@ -101,7 +101,9 @@ function renderPlayScreen() {
   const startBtn = document.createElement("button");
   startBtn.textContent = "Start";
   startBtn.addEventListener("click", () => {
+    // Hide play screen
     playScreenContainer.style.display = "none";
+    // Render game
     renderGame(game);
   });
 
