@@ -49,14 +49,12 @@ body {
 }
 
 .cell:hover {
-  background-color: rgb(0, 255, 0);
   cursor: pointer;
   opacity: 0.7;
 }
 
 .ship-cell {
   background-color: rgb(0, 255, 0);
-  border-color: black;
 }
 
 .hit-cell {
@@ -64,5 +62,5 @@ body {
 }
 
 .missed-cell {
-  background-color: rgb(0, 0, 255);
+  background-color: grey;
 }
