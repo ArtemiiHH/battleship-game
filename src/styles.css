@@ -140,11 +140,15 @@ button:hover {
 }
 
 .hit-cell {
-  background-color: red;
+  background-color: orange;
 }
 
 .missed-cell {
   background-color: black;
+}
+
+.sunk-ship {
+  background-color: red;
 }
 
 .missed-mark {
