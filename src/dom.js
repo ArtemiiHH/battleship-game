@@ -31,9 +31,17 @@ function renderWinLoseScreen() {
   const modal = document.createElement("div");
   modal.classList.add("modal");
   const winLoseText = document.createElement("h3");
-  winLoseText.textContent = "You won!";
-  
-  modal.appendChild(winLoseText);
+  const underText = document.createElement("p");
+
+  if (game.playerOne.board.allShipsSunk()) {
+    winLoseText.textContent = "YOU LOSE";
+    underText.textContent = "All your ships have been sunk!";
+  } else {
+    winLoseText.textContent = "YOU WON";
+    underText.textContent = "You sunk all opponent's ships!";
+  }
+
+  modal.append(winLoseText, underText);
   winLoseModal.appendChild(modal);
 }
 
