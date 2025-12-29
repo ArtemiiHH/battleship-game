@@ -59,7 +59,10 @@ function handleCellClicks(x, y) {
 }
 
 // Render board into wrapper
-function renderBoard(boardData, wrapper, type) {
+function renderBoard(board, wrapper, type) {
+  const boardData = board.board;
+  const ships = board.ships;
+
   // Create board
   for (let i = 0; i < boardData.length; i++) {
     const row = document.createElement("div");
@@ -79,8 +82,16 @@ function renderBoard(boardData, wrapper, type) {
         });
       }
 
+      let sunkShip = ships.find(
+        (ship) =>
+          ship.isSunk() &&
+          ship.cellsOccupied.some(([x, y]) => x === i && y === j)
+      );
+
       // Color cells based on state
-      if (value === "hit") {
+      if (sunkShip) {
+        cell.classList.add("sunk-ship");
+      } else if (value === "hit") {
         cell.classList.add("hit-cell");
       } else if (value === "miss") {
         cell.classList.add("missed-cell");
@@ -111,8 +122,8 @@ function renderGame(game) {
   const computerWrapper = createBoardWrapper("computer");
 
   // Render boards
-  renderBoard(game.playerOne.board.board, humanWrapper, "human");
-  renderBoard(game.playerTwo.board.board, computerWrapper, "computer");
+  renderBoard(game.playerOne.board, humanWrapper, "human");
+  renderBoard(game.playerTwo.board, computerWrapper, "computer");
 
   container.append(humanWrapper, computerWrapper);
 }
@@ -146,14 +157,14 @@ function renderPlayScreen() {
     // Clear wrapper first
     humanWrapper.innerHTML = "";
     // Render new ship layout
-    renderBoard(game.playerOne.board.board, humanWrapper, "human");
+    renderBoard(game.playerOne.board, humanWrapper, "human");
   });
 
   // Create human board wrapper
   const humanWrapper = createBoardWrapper("human");
 
   // Render human board
-  renderBoard(game.playerOne.board.board, humanWrapper, "human");
+  renderBoard(game.playerOne.board, humanWrapper, "human");
 
   // Append elements
   buttonContainer.append(randomFleetBtn, startBtn);

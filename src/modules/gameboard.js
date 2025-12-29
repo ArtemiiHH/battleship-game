@@ -68,6 +68,9 @@ export class Gameboard {
       this.board[coordX][coordY] = ship;
     }
 
+    // Assign coordinates
+    ship.cellsOccupied = coordinates;
+
     // Push placed ship into ship array
     this.ships.push(ship);
     return true;

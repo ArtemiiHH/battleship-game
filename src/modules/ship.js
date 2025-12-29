@@ -8,6 +8,7 @@ export class Ship {
     this.name = name;
     this.length = length;
     this.hits = 0;
+    this.cellsOccupied = [];
   }
 
   // Increase number of hits in my ship
