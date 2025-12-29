@@ -6,54 +6,59 @@ body {
     sans-serif;
   margin: 0;
   text-align: center;
+  height: 100vh;
 }
 
+/* Title */
+h1 {
+  font-size: 3rem;
+  margin: 0;
+  padding-top: 50px;
+}
+
+/* Play screen container */
 #play-screen-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  border: 1px solid white;
-  height: 90vh;
+  gap: 60px;
+  height: 80vh;
   width: auto;
 }
 
+/* Main game container */
 #container {
   display: none;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  border: 1px solid white;
-  height: 90vh;
+  height: 80vh;
   width: auto;
 }
 
+/* Win/lose container */
 #win-lose-modal {
-  background-color: black;
-  opacity: 0.5;
   display: none;
   justify-content: center;
   align-items: center;
-  border: 1px solid white;
   height: 90vh;
   width: auto;
 }
 
+/* Win/lose modal box */
 .modal {
+  background-color: white;
+  border-radius: 20px;
+  color: red;
   height: 300px;
   width: 500px;
 }
 
-h1 {
-  font-size: 3rem;
-  margin: 0;
-  padding: 10px;
-}
-
 .button-container {
   display: flex;
-  gap: 50px;
+  margin: 0 auto;
+  gap: 45px;
 }
 
 button {
@@ -61,7 +66,7 @@ button {
   border: none;
   border-radius: 10px;
   height: 40px;
-  width: 170px;
+  width: 150px;
   font-size: 1.1rem;
   font-weight: bold;
 }
@@ -72,11 +77,11 @@ button:hover {
 
 /* Board wrappers */
 .human-wrapper {
+  margin: 0 auto;
   border: 2px solid rgb(0, 255, 0);
   display: flex;
   height: auto;
   width: auto;
-  justify-self: center;
   align-self: center;
   /* Glow shadow */
   -webkit-box-shadow: 0px 0px 18px 2px rgba(0, 255, 0, 0.69);
