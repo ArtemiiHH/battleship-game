@@ -2,7 +2,6 @@
 // Game Controller Module
 // ==========================
 
-import { Gameboard } from "./gameboard";
 import { Ship } from "./ship";
 import { Player } from "./player";
 
@@ -105,7 +104,7 @@ export class Game {
       this.playerOne.board.allShipsSunk() ||
       this.playerTwo.board.allShipsSunk()
     ) {
-      this.isGameOver = true;
+      this.isGameRunning = false;
     }
   }
 }
