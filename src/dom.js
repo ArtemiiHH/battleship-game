@@ -28,13 +28,12 @@ function createBoardWrapper(type) {
 
 // Render win/losre screen UI
 function renderWinLoseScreen() {
-  container.style.display = "none";
-
   const modal = document.createElement("div");
   modal.classList.add("modal");
   const winLoseText = document.createElement("h3");
   winLoseText.textContent = "You won!";
-
+  
+  modal.appendChild(winLoseText);
   winLoseModal.appendChild(modal);
 }
 
@@ -44,8 +43,9 @@ function handleCellClicks(x, y) {
   game.playerAttack(x, y);
   renderGame(game);
 
-  if (game.isGameOver()) {
-    game.playerOne.board.disabled = true;
+  if (game.isGameRunning === false) {
+    container.style.display = "none";
+    winLoseModal.style.display = "flex";
     renderWinLoseScreen();
   }
 }
