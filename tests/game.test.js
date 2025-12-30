@@ -4,7 +4,6 @@
 
 import { Game } from "../src/modules/game";
 import { Ship } from "../src/modules/ship";
-import { Gameboard } from "../src/modules/gameboard";
 
 // Test start() function
 describe("Start function", () => {
@@ -48,12 +47,24 @@ describe("Player attack", () => {
     game.start();
 
     // Mock function
-    jest.spyOn(game, "computerAttack").mockImplementation(() => {});
+    game.computerAttack = jest.fn();
 
     game.playerAttack(5, 5);
 
     expect(game.playerTwo.board.board[5][5]).toBe("miss");
   });
+
+  // test("player attack misses a ship on the computer board", () => {
+  //   const game = new Game();
+  //   game.start();
+
+  //   // Mock function
+  //   jest.spyOn(game, "computerAttack").mockImplementation(() => {});
+
+  //   game.playerAttack(5, 5);
+
+  //   expect(game.playerTwo.board.board[5][5]).toBe("miss");
+  // });
 });
 
 // Test changeTurn() function
