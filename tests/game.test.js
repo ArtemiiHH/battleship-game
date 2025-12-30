@@ -52,3 +52,24 @@ describe("Player attack", () => {
     expect(game.playerTwo.board.board[5][5]).toBe("miss");
   });
 });
+
+// Test changeTurn() function
+describe("Change player turn", () => {
+  test("after player attack, switch turn", () => {
+    const game = new Game();
+    game.start();
+
+    game.changeTurn();
+
+    expect(game.currentTurn).toBe(game.playerTwo);
+  });
+
+  test("after computer attack, turn switches", () => {
+    const game = new Game();
+    game.start();
+
+    game.computerAttack();
+
+    expect(game.currentTurn).toBe(game.playerOne);
+  });
+});
