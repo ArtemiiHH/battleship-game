@@ -32,6 +32,8 @@ function renderWinLoseScreen() {
   modal.classList.add("modal");
   const winLoseText = document.createElement("h3");
   const underText = document.createElement("p");
+  const restartButton = document.createElement("button");
+  restartButton.textContent = "Restart";
 
   if (game.playerOne.board.allShipsSunk()) {
     winLoseText.textContent = "YOU LOSE";
@@ -41,7 +43,7 @@ function renderWinLoseScreen() {
     underText.textContent = "You sunk all opponent's ships!";
   }
 
-  modal.append(winLoseText, underText);
+  modal.append(winLoseText, underText, restartButton);
   winLoseModal.appendChild(modal);
 }
 
@@ -80,7 +82,7 @@ function renderBoard(board, wrapper, type) {
         cell.addEventListener("click", () => {
           handleCellClicks(i, j);
         });
-      } 
+      }
 
       let sunkShip = ships.find(
         (ship) =>
