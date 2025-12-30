@@ -80,7 +80,7 @@ function renderBoard(board, wrapper, type) {
         cell.addEventListener("click", () => {
           handleCellClicks(i, j);
         });
-      }
+      } 
 
       let sunkShip = ships.find(
         (ship) =>
@@ -91,8 +91,18 @@ function renderBoard(board, wrapper, type) {
       // Color cells based on state
       if (sunkShip) {
         cell.classList.add("sunk-ship");
+        // Mark cell as X if ship sunk
+        const x = document.createElement("p");
+        x.classList.add("missed-mark");
+        x.textContent = "•";
+        cell.appendChild(x);
       } else if (value === "hit") {
         cell.classList.add("hit-cell");
+        // Mark cell as X if ship is hit
+        const x = document.createElement("p");
+        x.classList.add("missed-mark");
+        x.textContent = "•";
+        cell.appendChild(x);
       } else if (value === "miss") {
         cell.classList.add("missed-cell");
         // Mark cell as X if missed
