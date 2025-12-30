@@ -23,14 +23,7 @@ export class Game {
     this.playerTwo.reset();
 
     // Ship objects for each player
-    const playerOneShips = {
-      Carrier: 5,
-      Battleship: 4,
-      Destroyer: 3,
-      Submarine: 3,
-      "Patrol Boat": 2,
-    };
-    const playerTwoShips = {
+    const playerShips = {
       Carrier: 5,
       Battleship: 4,
       Destroyer: 3,
@@ -39,13 +32,13 @@ export class Game {
     };
 
     // Place ships on each players board (random for now)
-    Object.entries(playerOneShips).forEach((ship) => {
+    Object.entries(playerShips).forEach((ship) => {
       const name = ship[0];
       const length = ship[1];
       this.playerOne.board.placeShipRandom(new Ship(name, length));
     });
 
-    Object.entries(playerTwoShips).forEach((ship) => {
+    Object.entries(playerShips).forEach((ship) => {
       const name = ship[0];
       const length = ship[1];
       this.playerTwo.board.placeShipRandom(new Ship(name, length));
@@ -91,8 +84,6 @@ export class Game {
       }
     }
   }
-
-  smartComputerAttack() {}
 
   changeTurn() {
     if (this.currentTurn === this.playerOne) this.currentTurn = this.playerTwo;
