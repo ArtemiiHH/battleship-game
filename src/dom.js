@@ -26,33 +26,13 @@ function createBoardWrapper(type) {
   return wrapper;
 }
 
-// Render win/losre screen UI
-function renderWinLoseScreen() {
-  const modal = document.createElement("div");
-  modal.classList.add("modal");
-  const winLoseText = document.createElement("h3");
-  const underText = document.createElement("p");
-  const restartButton = document.createElement("button");
-  restartButton.textContent = "Restart";
-
-  if (game.playerOne.board.allShipsSunk()) {
-    winLoseText.textContent = "YOU LOSE";
-    underText.textContent = "All your ships have been sunk!";
-  } else {
-    winLoseText.textContent = "YOU WON";
-    underText.textContent = "You sunk all opponent's ships!";
-  }
-
-  modal.append(winLoseText, underText, restartButton);
-  winLoseModal.appendChild(modal);
-}
-
 // Handle cell clicks
 function handleCellClicks(x, y) {
   // Launch attack
   game.playerAttack(x, y);
   renderGame(game);
 
+  // If all ships sunk render win/lose screen
   if (game.isGameRunning === false) {
     container.style.display = "none";
     winLoseModal.style.display = "flex";
@@ -181,6 +161,36 @@ function renderPlayScreen() {
   // Append elements
   buttonContainer.append(randomFleetBtn, startBtn);
   playScreenContainer.append(humanWrapper, buttonContainer);
+}
+
+// Render win/lose screen UI
+function renderWinLoseScreen() {
+  // Clear win/lose modal first
+  winLoseModal.innerHTML = "";
+
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  const winLoseText = document.createElement("h3");
+  const underText = document.createElement("p");
+  // Restart button
+  const restartButton = document.createElement("button");
+  restartButton.textContent = "Restart";
+  restartButton.addEventListener("click", () => {
+    container.innerHTML = "";
+    playScreenContainer.style.display = "flex";
+  });
+
+  // Modal text
+  if (game.playerOne.board.allShipsSunk()) {
+    winLoseText.textContent = "YOU LOSE";
+    underText.textContent = "All your ships have been sunk!";
+  } else {
+    winLoseText.textContent = "YOU WON";
+    underText.textContent = "You sunk all opponent's ships!";
+  }
+
+  modal.append(winLoseText, underText, restartButton);
+  winLoseModal.appendChild(modal);
 }
 
 // Render play screen
