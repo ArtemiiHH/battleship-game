@@ -47,24 +47,12 @@ describe("Player attack", () => {
     game.start();
 
     // Mock function
-    game.computerAttack = jest.fn();
+    jest.spyOn(game, "computerAttack").mockImplementation(() => {});
 
     game.playerAttack(5, 5);
 
     expect(game.playerTwo.board.board[5][5]).toBe("miss");
   });
-
-  // test("player attack misses a ship on the computer board", () => {
-  //   const game = new Game();
-  //   game.start();
-
-  //   // Mock function
-  //   jest.spyOn(game, "computerAttack").mockImplementation(() => {});
-
-  //   game.playerAttack(5, 5);
-
-  //   expect(game.playerTwo.board.board[5][5]).toBe("miss");
-  // });
 });
 
 // Test changeTurn() function
@@ -85,5 +73,21 @@ describe("Change player turn", () => {
     game.computerAttack();
 
     expect(game.currentTurn).toBe(game.playerOne);
+  });
+});
+
+// Test Game Over
+describe("End game", () => {
+  test("game ends if all ships of one player sunk", () => {
+    const game = new Game();
+    game.start();
+
+    game.playerOne.board.ships.forEach((ship) => {
+      ship.hits = ship.length;
+    });
+
+    game.isGameOver();
+
+    expect(game.isGameRunning).toBe(false);
   });
 });
