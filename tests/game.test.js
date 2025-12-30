@@ -47,6 +47,9 @@ describe("Player attack", () => {
     const game = new Game();
     game.start();
 
+    // Mock function
+    jest.spyOn(game, "computerAttack").mockImplementation(() => {});
+
     game.playerAttack(5, 5);
 
     expect(game.playerTwo.board.board[5][5]).toBe("miss");
