@@ -1,6 +1,8 @@
 # Battleship-game
 
 A classic Battleship game built with HTML, CSS, and vanilla JavaScript, focused on clean architecture and state-driven UI rendering.
+Demo link:
+https://artemiihh.github.io/battleship-game/
 
 # Features
 
